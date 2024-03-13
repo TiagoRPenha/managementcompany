@@ -7,8 +7,8 @@ namespace Management.Infrastructure.Repositories
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity
     {
-        private readonly ManagementContext _context;
-        private readonly DbSet<TEntity> _entities;
+        protected readonly ManagementContext _context;
+        protected readonly DbSet<TEntity> _entities;
 
         public BaseRepository(ManagementContext context)
         {
@@ -16,12 +16,12 @@ namespace Management.Infrastructure.Repositories
             _entities = context.Set<TEntity>();
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public virtual async Task<List<TEntity>> GetAllAsync()
         {
             return await _entities.ToListAsync();
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
             return await _entities.FindAsync(id);
         }

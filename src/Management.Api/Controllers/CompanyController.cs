@@ -1,8 +1,7 @@
 ﻿using Management.Application.Commands.CompanyCommand.CreateCompany;
 using Management.Application.Commands.CompanyCommand.UpdateCompany;
-using MediatR;
+using Management.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Writers;
 
 namespace Management.Api.Controllers
 {
@@ -10,43 +9,47 @@ namespace Management.Api.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly ICompanyService _companyService;
 
-        public CompanyController(IMediator mediator)
+        public CompanyController(ICompanyService companyService)
         {
-            _mediator = mediator;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] CreateCompanyCommand companyCommand)
-        {
-            var company = await _mediator.Send(companyCommand);
-
-            return Ok(company);
-        }
-
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateAsync([FromBody] UpdateCompanyCommand companyCommand, int companyId)
-        {
-            await _mediator.Send(companyCommand);
-
-            return Ok();
-        }
-
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteAsync(int companyId)
-        {
-            return Ok();
+            _companyService = companyService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
+            var response = await _companyService.GetAllAsync();
+
+            return Ok(response);
+        }
+
+        [HttpGet("{companyId:int}")]
+        public async Task<IActionResult> GetByIdAsync(int companyId)
+        {
+            var response = await _companyService.GetByIdAsync(companyId);
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromBody] CreateCompanyCommand companyCommand)
+        {
+            var company = await _companyService.CreateAsync(companyCommand);
+
+            return Ok(company);
+        }
+
+        [HttpPut("{companyId:int}")]
+        public async Task<IActionResult> UpdateAsync([FromBody] UpdateCompanyCommand companyCommand, int companyId)
+        {
+            await _companyService.UpdateAsync(companyCommand, companyId);
+
             return Ok();
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetAllAsync(int companyId)
+        [HttpDelete("{companyId:int}")]
+        public async Task<IActionResult> DeleteAsync(int companyId)
         {
             return Ok();
         }

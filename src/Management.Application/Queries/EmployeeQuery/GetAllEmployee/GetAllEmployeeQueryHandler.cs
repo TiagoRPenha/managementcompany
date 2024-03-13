@@ -17,7 +17,9 @@ namespace Management.Application.Queries.EmployeeQuery.GetAllEmployee
         {
             var employees = await _employeeRepository.GetAllAsync();
 
-            return employees.Select(p => new EmployeeViewModel(p.Name, p.Document, p.Departament, p.Role, p.IndActive)).ToList();
+            return employees.Select(p => new EmployeeViewModel(p.Name, p.Document, p.Departament, p.Role, p.IndActive))
+                            .OrderBy(p => p.Name)
+                            .ToList();
         }
     }
 }

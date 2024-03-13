@@ -1,5 +1,6 @@
 using Management.Api.Configurations;
 using Management.Application.Commands.CompanyCommand.CreateCompany;
+using Management.Application.Mappings;
 using Management.Infrastructure.DbContextConfiguration;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -24,6 +25,8 @@ builder.Services.AddDbContext<ManagementContext>(options =>
 
 builder.Services.ResolveDependenciesInjection();
 builder.Services.AddMediatR(m => m.RegisterServicesFromAssembly(typeof(CreateCompanyCommand).Assembly));
+
+builder.Services.AddAutoMapper(typeof(ManagerMapping));
 
 var app = builder.Build();
 

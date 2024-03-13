@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Management.Application.ViewModels;
+using MediatR;
 
 namespace Management.Application.Queries.EmployeeQuery.GetByIdEmployee
 {
-    internal class GetByIdEmployeeQuery
+    public class GetByIdEmployeeQuery : IRequest<EmployeeViewModel>
     {
+        public GetByIdEmployeeQuery(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; set; }
     }
 }

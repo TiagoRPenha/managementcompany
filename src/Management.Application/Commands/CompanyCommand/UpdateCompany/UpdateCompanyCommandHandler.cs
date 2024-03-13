@@ -1,4 +1,5 @@
-﻿using Management.Core.Entities;
+﻿using AutoMapper;
+using Management.Core.Entities;
 using Management.Core.Interfaces.Repositories;
 using MediatR;
 
@@ -7,20 +8,19 @@ namespace Management.Application.Commands.CompanyCommand.UpdateCompany
     public class UpdateCompanyCommandHandler : IRequestHandler<UpdateCompanyCommand, Unit>
     {
         private readonly ICompanyRepository _companyRepository;
-        public UpdateCompanyCommandHandler(ICompanyRepository companyRepository)
+        private readonly IMapper _mapper;
+
+        public UpdateCompanyCommandHandler(ICompanyRepository companyRepository, IMapper mapper)
         {
             _companyRepository = companyRepository;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdateCompanyCommand request, CancellationToken cancellationToken)
         {
-            var address = new Address(request.Address.Street,
-                                      request.Address.ResidenceNumber,
-                                      request.Address.Neighborhood,
-                                      request.Address.Complement,
-                                      request.Address.City,
-                                      request.Address.State,
-                                      request.Address.Country);
+            var address = _mapper.Map<Address>(request.Address);
+
+            var company = _companyRepository.GetByIdAsync(request.Id);
 
             var company = new Company(request.Name, address, request.Phone);
 

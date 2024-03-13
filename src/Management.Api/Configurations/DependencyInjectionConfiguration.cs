@@ -1,4 +1,6 @@
-﻿using Management.Core.Interfaces.Repositories;
+﻿using Management.Application.Interfaces.Services;
+using Management.Application.Services;
+using Management.Core.Interfaces.Repositories;
 using Management.Infrastructure.DbContextConfiguration;
 using Management.Infrastructure.Repositories;
 
@@ -12,6 +14,9 @@ namespace Management.Api.Configurations
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             return services;
         }
