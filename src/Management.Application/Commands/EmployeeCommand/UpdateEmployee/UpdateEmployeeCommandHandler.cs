@@ -32,6 +32,7 @@ namespace Management.Application.Commands.EmployeeCommand.UpdateEmployee
             employee.Departament = request.Departament;
             employee.Role = request.Role;
             employee.CompanyId = request.CompanyId;
+            employee.IndActive = request.IndActive;
 
             await _employeeRepository.UpdateAsync(employee);
 

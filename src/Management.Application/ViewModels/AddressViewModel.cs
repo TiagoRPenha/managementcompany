@@ -7,6 +7,17 @@ namespace Management.Application.ViewModels
 {
     public class AddressViewModel
     {
+        public AddressViewModel(string street, string residenceNumber, string neighborhood, string complement, string city, string state, string country)
+        {
+            Street = street;
+            ResidenceNumber = residenceNumber;
+            Neighborhood = neighborhood;
+            Complement = complement;
+            City = city;
+            State = state;
+            Country = country;
+        }
+
         public string Street { get; set; }
         public string ResidenceNumber { get; set; }
         public string Neighborhood { get; set; }

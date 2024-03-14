@@ -45,7 +45,7 @@ namespace Management.Infrastructure.Repositories
         /// </summary>
         /// <param name="entity">Record to be created</param>
         /// <returns>Returns the created record <see cref="TEntity"/></returns>
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
             _entities.Add(entity);
 

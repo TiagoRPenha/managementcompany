@@ -1,24 +1,28 @@
 version: '3.4'
 
 services:
-  mysql_server:
-    image: mysql:8.0.22
-    hostname: 'mysql_server'
-    ports:
-      - '4406:4406' 
-    expose:
-      - 4406
-    volumes:
-      - c:\dados\volumes\mssql:/var/opt/mssql3  
-    environment:
-      MYSQL_ROOT_PASSWORD: liMin12@*Me
-      MYSQL_USER: root
-      MYSQL_PASSWORD: liMin12@*Me
-      MYSQL_DATABASE: ManagementCompany
   management.api:
     image: ${DOCKER_REGISTRY-}managementapi
     build:
       context: .
       dockerfile: src/Management.Api/Dockerfile
     depends_on:
-      - mysql_server
+      - databaseapi
+    restart: always
+  databaseapi:
+    image: mysql:8.0.22
+    container_name: mysqldb
+    ports:
+      - '3306:3306' 
+    expose:
+      - 3306
+    volumes:
+     - db-volume:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: liMin12@*Me
+      MYSQL_USER: usd
+      MYSQL_PASSWORD: liMin12@*Me
+      MYSQL_DATABASE: ManagementCompany
+volumes:
+  db-volume:

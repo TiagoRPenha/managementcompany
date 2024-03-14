@@ -24,6 +24,8 @@ namespace Management.Application.Mappings
             CreateMap<Employee, CreateEmployeeCommand>().ReverseMap();
             CreateMap<Company, UpdateCompanyCommand>().ReverseMap();
             CreateMap<Employee, UpdateEmployeeCommand>().ReverseMap();
+
+            CreateMap<CompanyViewModel, CreateCompanyCommand>().ReverseMap();
         }
     }
 }

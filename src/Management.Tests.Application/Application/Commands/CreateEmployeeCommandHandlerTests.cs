@@ -11,7 +11,7 @@ namespace Management.Tests.Application.Application.Commands
     public class CreateEmployeeCommandHandlerTests
     {
         [Fact]
-        public async void CreateEmployee()
+        public async void CreateEmployeeAsync()
         {
             //Arrange
             MapperConfiguration mapperConfig = new MapperConfiguration(cfg => {

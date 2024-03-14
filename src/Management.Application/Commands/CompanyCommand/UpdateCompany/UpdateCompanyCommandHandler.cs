@@ -36,6 +36,7 @@ namespace Management.Application.Commands.CompanyCommand.UpdateCompany
             company.Name = request.Name;
             company.Phone = request.Phone;
             company.Address = address;
+            company.IndActive = request.IndActive;
 
             await _companyRepository.UpdateAsync(company);
 

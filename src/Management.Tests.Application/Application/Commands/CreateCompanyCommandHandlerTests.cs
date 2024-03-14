@@ -10,7 +10,7 @@ namespace Management.Tests.Application.Application.Commands
     public class CreateCompanyCommandHandlerTests
     {
         [Fact]
-        public async void CreateCompany()
+        public async void CreateCompanyAsync()
         {
             //Arrange
             MapperConfiguration mapperConfig = new MapperConfiguration(cfg => {
@@ -23,13 +23,13 @@ namespace Management.Tests.Application.Application.Commands
 
             var company = new Company
             {
-                Id = 1,
                 Name = title + Guid.NewGuid().ToString(),
                 Phone = "9999999",
                 Address = new Address("STREET One", "1", "CENTRO", "HOME", "FRANCA", "SÃO PAULO", "BRAZIL")
             };
 
             ICompanyRepository repository = Substitute.For<ICompanyRepository>();
+            repository.CreateAsync(Arg.Any<Company>()).Returns(company);
 
             var createCompanyCommandHandler = new CreateCompanyCommandHandler(repository, mapper);
 
@@ -39,8 +39,8 @@ namespace Management.Tests.Application.Application.Commands
             var response = await createCompanyCommandHandler.Handle(createCompanyCommand, new CancellationToken());
 
             //Assert
-            Assert.NotNull(response);
-            Assert.Equal(company.Name, response.Name);
+            
+            await repository.Received(1).CreateAsync(Arg.Any<Company>());
         }
     }
 }

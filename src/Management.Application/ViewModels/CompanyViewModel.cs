@@ -7,6 +7,7 @@ namespace Management.Application.ViewModels
 {
     public class CompanyViewModel
     {
+        protected CompanyViewModel() { }
         public CompanyViewModel(string name, AddressViewModel address, string phone, bool indActive)
         {
             Name = name;
