@@ -1,4 +1,9 @@
-﻿using Management.Core.Entities;
+﻿// <summary> AddressMapping, Class responsible for mapping the entity's properties to generate migrations and consequently the database </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+using Management.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

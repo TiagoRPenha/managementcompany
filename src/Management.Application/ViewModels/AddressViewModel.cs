@@ -1,4 +1,9 @@
-﻿namespace Management.Application.ViewModels
+﻿// <summary> AddressViewModel, Class responsible for expressing address-related data </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+namespace Management.Application.ViewModels
 {
     public class AddressViewModel
     {

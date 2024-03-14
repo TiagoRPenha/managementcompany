@@ -1,5 +1,8 @@
-﻿using Management.Core.Entities;
-
+﻿// <summary> CompanyViewModel, Class responsible for expressing data related to the company </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
 namespace Management.Application.ViewModels
 {
     public class CompanyViewModel

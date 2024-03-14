@@ -1,4 +1,9 @@
-﻿using Management.Core.Entities;
+﻿// <summary> ManagementContext, Class represents the context with the MySql database </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+using Management.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Management.Infrastructure.DbContextConfiguration

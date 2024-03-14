@@ -1,7 +1,14 @@
-﻿namespace Management.Core.Entities
+﻿// <summary> Employee, Class responsible for expressing data related to the employee </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+namespace Management.Core.Entities
 {
     public class Employee : Entity
     {
+        public Employee() { }
+
         public Employee(string name, string document, string departament, string role, int companyId)
         {
             CompanyId = companyId;

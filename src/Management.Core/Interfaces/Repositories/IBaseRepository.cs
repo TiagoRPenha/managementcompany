@@ -1,4 +1,9 @@
-﻿using Management.Core.Entities;
+﻿// <summary> IBaseRepository, Generic interface with declaration of common methods for application </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+using Management.Core.Entities;
 
 namespace Management.Core.Interfaces.Repositories
 {

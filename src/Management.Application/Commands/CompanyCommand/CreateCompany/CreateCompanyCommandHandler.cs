@@ -1,4 +1,9 @@
-﻿using AutoMapper;
+﻿// <summary> CreateCompanyCommandHandler, Class implements CreateCompanyCommand, accessing the database through the repository </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+using AutoMapper;
 using Management.Application.ViewModels;
 using Management.Core.Entities;
 using Management.Core.Interfaces.Repositories;
@@ -17,6 +22,12 @@ namespace Management.Application.Commands.CompanyCommand.CreateCompany
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Method responsible for making the request
+        /// </summary>
+        /// <param name="request">Request object</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<CompanyViewModel> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             var address = _mapper.Map<Address>(request.Address);

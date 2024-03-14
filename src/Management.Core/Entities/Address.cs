@@ -1,4 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿// <summary> Address, Class responsible for expressing address-related data </summary>
+// <remarks>
+// <para>author: <c>tiago.penha</c></para>
+// <para>date: <c>2024-03-14</c></para>
+// </remarks>
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Management.Core.Entities
 {

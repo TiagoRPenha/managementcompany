@@ -16,6 +16,12 @@ namespace Management.Application.Queries.EmployeeQuery.GetByIdEmployee
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Method responsible for making the request
+        /// </summary>
+        /// <param name="request">Request object</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Returns a of <see cref="EmployeeViewModel"/></returns>
         public async Task<EmployeeViewModel> Handle(GetByIdEmployeeQuery request, CancellationToken cancellationToken)
         {
             var employee = await _employeeRepository.GetByIdAsync(request.Id);

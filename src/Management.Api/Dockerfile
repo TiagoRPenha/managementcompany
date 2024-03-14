@@ -9,6 +9,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Management.Api/Management.Api.csproj", "src/Management.Api/"]
+COPY ["src/Management.Infrastructure/Management.Infrastructure.csproj", "src/Management.Infrastructure/"]
+COPY ["src/Management.Core/Management.Core.csproj", "src/Management.Core/"]
+COPY ["src/Management.Application/Management.Application.csproj", "src/Management.Application/"]
 RUN dotnet restore "./src/Management.Api/Management.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Management.Api"
