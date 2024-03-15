@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  management.api:
+    image: ${DOCKER_REGISTRY-}managementapi
+    build:
+      context: .
+      dockerfile: src/Management.Api/Dockerfile
+    depends_on:
+      - databaseapi
+    restart: always
+  databaseapi:
+    image: mysql:8.0.22
+    container_name: mysqldb
+    ports:
+      - '3306:3306' 
+    expose:
+      - 3306
+    volumes:
+     - db-volume:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: liMin12@*Me
+      MYSQL_USER: usd
+      MYSQL_PASSWORD: liMin12@*Me
+      MYSQL_DATABASE: ManagementCompany
+volumes:
+  db-volume:
