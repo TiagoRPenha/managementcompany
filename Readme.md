@@ -1,7 +1,7 @@
 # Informações Gerais
 
-PROJETO: TaskManager
-OBJETIVO: Desenvolver uma API que permita aos usuários organizar e monitorar suas tarefas diárias, bem como colaborar com colegas de equipe.
+PROJETO: ManagementCompany
+OBJETIVO: Desenvolver uma API que permita o gerencimamento de empresas e funcionarios.
 DESENVOLVEDOR: Tiago Penha
 # 
 
@@ -13,42 +13,52 @@ https://visualstudio.microsoft.com/pt-br/downloads/
 Docker
 https://www.docker.com/get-started/
 
-Obs: Neste repositório se encontra a solution TaskManagerNet e dentro da pasta src os projtetos (API, Business, Infrastructure,TaskManager.Tests).
+Obs: Neste repositório se encontra a solution ManagementCompany e dentro da pasta src os projtetos:
+    - Management.Api
+    - Management.Application
+    - Management.Core
+    - Management.Infrastructure
+    - Management.Tests.Application
 
 # API
 ## Resumo:
-Aplicação do tipo ASPNET.CORE API, utiliza como backEnd C#, .Net 6.0 e conexão com SQL server, faz uso de controllers
+Aplicação do tipo ASPNET.CORE API, usando a versão .Net 6.0 e conexão com MySql, faz uso de controllers.
 
-# Business
+# Application
 ## Resumo:
-Aplicação do tipo ClassLibray responsavel por realizar a regra de negocio da aplicação, contendo as interfaces, modelos e serviços, utiliza como backEnd C#
+Aplicação do tipo ClassLibray responsavel por realizar a regra de negocio da aplicação, utiliza o padrão CRQS, interfaces, serviços.
+
+# Core
+## Resumo:
+Aplicação do tipo ClassLibray responsavel por gerenciar a aplicação, é a camada central.
 
 # Infrastructure
 ## Resumo:
-Aplicação do tipo ClassLibray responsavel por realizar a conexão com o Banco de dados Sql Server, utiliza como backEnd C# e o ORM Entity Framework Core
+Aplicação do tipo ClassLibray responsavel por realizar a conexão com o Banco de dados MySQL, através do ORM Entity Framework Core
 
-## _Linguagens utlizadas pela aplicação:_
+# Tests
+## Resumo:
+Aplicação do tipo xUnit responsavel por realizar os testes na aplicação, fazendo usado da biblioteca NSubstitute.
+
+# Detalhes
+## Refinamento:
+ 1 - A aplicação esta aplicando o uso de containers, para isso estou fazendo uso do Docker para as imagens e Docker Compose como orquestrador. 
+     Observação: Com o uso do Visual Studio é possivel subir o container com a api e o banco de dados, basta selecionar o Docker Compose como inicializador.
+      Podendo tambem ser iniciado manualmente, seguindo os passos abaixo:
+        1 - Baixe o repositório do projeto, branch(develop)
+        2 - Através da linha de comando entre dentro da pasta onde se encontra a solution e o arquivo docker-compose
+        3 - Execute o seguinte comando:  docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+        
+ 2 - A imagem da api está disponivel no Docker Hub, podendo ser acessada através do link abaixo:    
+        -    https://hub.docker.com/repository/docker/137504/management.api/general
+
+## _Linguagens/Frameworks utlizadas pela aplicação:_
 
 - C#
 - Net 6.0
 - Microsoft.EntityFrameworkCore.7.0.16
-- Sql Server
+- MySQL
 - XUnit 
 - NSubstitute
-
-# Fase2
-## Refinamento:
- 1 - Somente o usuário que criou a tarefa, terá o direto de excluir a mesma ?
- 2 - Como será feito a distinção de um usuário normal e um usuário gerente ?
- 3 - Pode sugir outros tipos de usuários ?
- 4 - Usuário do tipo gerente podera excluir um projeto com tasks pendentes ?
- 5 - O histórico de atualização será utilizando quando ? Somente para uma eventual analise ou futuramente será incorporado a API ?
- 6 - Os usuarios poderam criar categorias para as tarefas, exemplo (Trabalho, Estudo)
- 7 - Vamos ter autenticação de usuário na api ?
-
-# Fase 3
-## Refinamento:
- 1 - Colocaria autenticação JWT ou algo do tipo
- 2 - Criaria um crud para usuario
- 3 - Enviaria notificações para o dono do projeto, quando a tarefa tiver atualização.
-     Para isso utilizaria a Mensageria(RabbitMq) para que fosse feito o envio em background.
+- Docker
+- Docker Compose
